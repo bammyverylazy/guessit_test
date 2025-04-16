@@ -8,28 +8,62 @@ class SummaryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Summary"),
+        backgroundColor: Colors.orange, 
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Back arrow icon
+          icon: Icon(Icons.arrow_back, color: Colors.white), 
           onPressed: () {
-            Navigator.pop(context); // Navigate back to the previous page
+            Navigator.pop(context); 
           },
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Overall Score:",
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 16),
-            Text(
-              "$score",
-              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-            ),
-          ],
+      body: Container(
+        color: Colors.orange, 
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: 16),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  SizedBox(
+                    width: 220, 
+                    height: 220, 
+                    child: CircularProgressIndicator(
+                      value: score / 16,
+                      strokeWidth: 28,
+                      strokeCap: StrokeCap.round,
+                      backgroundColor: Colors.white, 
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        const Color.fromARGB(255, 129, 198, 255),
+                      ), 
+                    ),
+                  ),
+                  Text(
+                    "$score",
+                    style: TextStyle(
+                      fontSize: 120,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white, 
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromRGBO(109, 72, 255, 1), 
+                ),
+                onPressed: () {
+                  // Add your button action here
+                },
+                child: Text(
+                  "Well Done",
+                  style: TextStyle(fontSize: 40, color: Colors.white), 
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

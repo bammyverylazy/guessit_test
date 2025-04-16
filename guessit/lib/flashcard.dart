@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'summary.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -206,7 +207,7 @@ class _FlashcardPageState extends State<FlashcardPage> {
                                   SizedBox(height: 10),
                                   LinearProgressIndicator(
                                     value: _remainingTime / 300,
-                                    backgroundColor: Colors.white,
+                                    backgroundColor: Colors.white, 
                                     valueColor: AlwaysStoppedAnimation<Color>(
                                       Colors.yellow[800]!,
                                     ),
@@ -254,14 +255,14 @@ class _FlashcardPageState extends State<FlashcardPage> {
                           actions: [
                             TextButton(
                               onPressed: () {
-                                Navigator.of(context).pop(); // Close the dialog
+                                Navigator.of(context).pop(); 
                               },
                               child: Text("Resume Game"),
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.of(context).pop(); // Close the dialog
-                                Navigator.pop(context); // Exit the FlashcardPage
+                                Navigator.of(context).pop();
+                                Navigator.pop(context); 
                               },
                               child: Text("Quit"),
                             ),
@@ -290,43 +291,6 @@ class _FlashcardPageState extends State<FlashcardPage> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-// Summary Page to display the score
-class SummaryPage extends StatelessWidget {
-  final int score;
-  const SummaryPage({super.key, required this.score});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Summary"),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Back arrow icon
-          onPressed: () {
-            Navigator.pop(context); // Navigate back to the previous page
-          },
-        ),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Overall Score:",
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 16),
-            Text(
-              "$score",
-              style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold),
-            ),
-          ],
         ),
       ),
     );
